@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "maintainer": {
+    "name": "Example Maintainer",
+    "mark": "M",
+    "handle": "example-maintainer"
+  },
+  "commit_email": {
+    "enforce": false,
+    "address": "example@example.invalid"
+  },
+  "language": {
+    "operational": "English",
+    "summaries": "English"
+  },
+  "timezone": "Etc/UTC",
+  "notes": {
+    "mode": "none",
+    "notion": {
+      "home_page": "https://notes.example.invalid/home",
+      "status_page": "https://notes.example.invalid/status",
+      "portfolio_database": {
+        "id": "example-portfolio",
+        "name": "Example Portfolio"
+      },
+      "articles_database": {
+        "id": "example-articles",
+        "name": "Example Articles"
+      },
+      "schema_fields": {
+        "status": "Status",
+        "type": "Type",
+        "perspective": "Perspective",
+        "start_date": "Start date",
+        "repo": "Repository",
+        "source": "Source",
+        "updated": "Updated",
+        "project": "Project"
+      }
+    },
+    "markdown": {
+      "destination_folder": "notes"
+    }
+  },
+  "upstream": {
+    "url": "https://code.example.invalid/project-os",
+    "sibling_checkout": "../project-os"
+  },
+  "registry": {
+    "path": "PROJECTS.md",
+    "portfolio_exists": false
+  },
+  "shared_services": {
+    "announcement_channel": {
+      "enabled": false,
+      "how_to_url": "https://docs.example.invalid/announcements"
+    }
+  }
+}
