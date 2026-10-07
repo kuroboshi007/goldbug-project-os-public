@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_READMES = ('README.md', 'README.zh-TW.md', 'README.ja.md')
 ENV = {k: v for k, v in os.environ.items()
        if not k.startswith(('GIT_', 'PROJECT_OS_'))}
 ENV.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull)
@@ -150,26 +151,36 @@ class ExportTests(unittest.TestCase):
         self.assertIn('goldBug Project OS', readme)
         for name in ('README.md', 'docs/configuration.md'):
             self.assertIn('freely change or omit', (self.destination / name).read_text())
-        self.assertEqual(len(entries(self.clone)), 42)
+        self.assertEqual(len(entries(self.clone)), 45)
+        for name in (*PUBLIC_READMES, 'LICENSE'):
+            self.assertIn(name, entries(self.clone))
+            self.assertEqual((self.destination / name).read_bytes(),
+                             committed_output(self.clone, name)[0])
+        for name in PUBLIC_READMES:
+            text = (self.destination / name).read_text()
+            for other in PUBLIC_READMES:
+                self.assertIn('](' + other + ')', text)
+            self.assertIn('](LICENSE)', text)
         self.assertFalse((self.destination / 'export/ARCHIVE.README.example.md').exists())
 
     def test_downstream_reexports_with_customized_or_omitted_attribution(self):
         self.export()
         downstream = self.destination
         git(downstream, 'init', '-q', '--template=')
-        readme = downstream / 'README.md'
-        original = readme.read_text()
-        paragraphs = original.split('\n\n')
+        paragraphs = {name: (downstream / name).read_text().split('\n\n')
+                      for name in PUBLIC_READMES}
+        legal_notice = (downstream / 'LICENSE').read_bytes()
         for label, credit in (
             ('initial', None),
             ('custom', '`goldBug Project OS` provides project rules built by A with AI collaborators.'),
             ('omitted', '`goldBug Project OS` provides project rules, playbooks, and templates.'),
         ):
             with self.subTest(attribution=label):
-                edited = paragraphs[:]
-                if credit is not None:
-                    edited[1] = credit
-                readme.write_text('\n\n'.join(edited))
+                for name in PUBLIC_READMES:
+                    edited = paragraphs[name][:]
+                    if credit is not None:
+                        edited[1] = credit
+                    (downstream / name).write_text('\n\n'.join(edited))
                 git(downstream, 'add', '.')
                 git(downstream, '-c', 'user.name=Synthetic Author',
                     '-c', 'user.email=author@example.invalid',
@@ -183,12 +194,16 @@ class ExportTests(unittest.TestCase):
                 actual = sorted(path.relative_to(destination).as_posix()
                                 for path in destination.rglob('*') if path.is_file())
                 self.assertEqual(actual, sorted(entries(downstream)))
-                self.assertEqual(len(actual), 42)
+                self.assertEqual(len(actual), 45)
                 for name in entries(downstream):
                     expected, mode = committed_output(downstream, name)
                     self.assertEqual((destination / name).read_bytes(), expected)
                     self.assertEqual((destination / name).stat().st_mode & 0o777, mode)
-                self.assertEqual((destination / 'README.md').read_bytes(), readme.read_bytes())
+                for name in PUBLIC_READMES:
+                    self.assertEqual((destination / name).read_bytes(),
+                                     (downstream / name).read_bytes())
+                self.assertEqual((destination / 'LICENSE').read_bytes(), legal_notice)
+                self.assertEqual((downstream / 'LICENSE').read_bytes(), legal_notice)
 
     def test_missing_embedded_template_fails_before_writing(self):
         script = self.clone / 'scripts/export-candidate.sh'

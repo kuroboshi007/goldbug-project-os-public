@@ -17,7 +17,11 @@ with mode 644. It never reads or falls back to the original archive README; the
 protected archive remains untouched. A missing embedded template fails before
 creating a destination. Every other output retains its committed bytes and mode.
 
-The manifest remains exactly 42 files. The archive template travels inside the
+This local candidate's manifest contains exactly 45 files, including the three
+language READMEs and the maintainer-approved standard MIT `LICENSE`. This expanded
+inventory requires its own review; earlier 42-file hashes do not approve these
+additions or changed documents. Preserve required legal notices when exporting.
+The archive template travels inside the
 already included exporter, so there is no omitted fixture dependency. A fresh
 candidate initialized and committed as a downstream Git repository can run both
 `python3 tests/test-export.py` and the exporter again. Export regressions exercise
