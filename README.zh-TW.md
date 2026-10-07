@@ -84,7 +84,7 @@ Portfolio 追蹤與公告頻道均為選用功能，預設關閉。即使設定�
 4. 維護者處理剩餘決策並合併。
 5. 只對已確認資訊套用所選筆記模式，再以獨立 OS issue／PR 推廣可重用的學習。
 
-GitHub 保存工作紀錄；專案文件保存專案事實與已接受決策。筆記保存已確認的人類摘要，不建立另一套任務狀態。交接時記錄 OS revision 與 configuration source。代理提交須遵循[作者標記](AGENTS.md#authorship-marks)中的完整、連續 trailers；顯示用設定欄位不會設定 Git 身分。詳見[運作模型](docs/operating-model.md)、[協作](docs/ai-collaboration.md)及[審查](playbooks/review-change.md)。
+GitHub 保存工作紀錄；專案文件保存專案事實與已接受決策。筆記保存供人閱讀的已確認摘要，不建立另一套任務狀態。交接時記錄 OS revision 與 configuration source。代理提交須遵循[作者標記](AGENTS.md#authorship-marks)中的附產品名稱的連續 trailers；顯示用設定欄位不會設定 Git 身分。詳見[運作模型](docs/operating-model.md)、[協作](docs/ai-collaboration.md)及[審查](playbooks/review-change.md)。
 
 ## 驗證與匯出
 
