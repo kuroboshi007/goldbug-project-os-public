@@ -151,7 +151,7 @@ class ExportTests(unittest.TestCase):
         self.assertIn('goldBug Project OS', readme)
         for name in ('README.md', 'docs/configuration.md'):
             self.assertIn('freely change or omit', (self.destination / name).read_text())
-        self.assertEqual(len(entries(self.clone)), 45)
+        self.assertEqual(len(entries(self.clone)), 46)
         for name in (*PUBLIC_READMES, 'LICENSE'):
             self.assertIn(name, entries(self.clone))
             self.assertEqual((self.destination / name).read_bytes(),
@@ -194,7 +194,7 @@ class ExportTests(unittest.TestCase):
                 actual = sorted(path.relative_to(destination).as_posix()
                                 for path in destination.rglob('*') if path.is_file())
                 self.assertEqual(actual, sorted(entries(downstream)))
-                self.assertEqual(len(actual), 45)
+                self.assertEqual(len(actual), 46)
                 for name in entries(downstream):
                     expected, mode = committed_output(downstream, name)
                     self.assertEqual((destination / name).read_bytes(), expected)
