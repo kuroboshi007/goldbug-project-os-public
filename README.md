@@ -8,7 +8,7 @@
 
 For maintainers and AI collaborators who need clear project scope, current status, accepted decisions, review responsibilities, and handoffs across conversations. Copy the minimum templates into a project and fill them with confirmed facts; use the playbooks to guide work.
 
-This is a project operating framework, not a computer operating system or an installed application. It does not create projects, run agents, synchronize notes, or publish repositories automatically. This local candidate's public repository URL and release are still awaiting approval.
+This is a project operating framework, not a computer operating system or an installed application. It does not create projects, run agents, synchronize notes, or publish repositories automatically. Public source repository: [goldbug-project-os-public](https://github.com/kuroboshi007/goldbug-project-os-public).
 
 These three READMEs provide aligned starting guides. The linked rules and templates are currently in English. Follow the canonical [AGENTS.md read order](AGENTS.md#required-read-order); configuration and policy details live in the linked documents.
 
@@ -117,6 +117,6 @@ Inspect actual exported bytes, modes, links, filenames, and privacy separately. 
 
 ## License and optional project credit
 
-This candidate includes the standard [MIT License](LICENSE), copyright `2026 k.goldbug.studio`, as approved by the maintainer. MIT permits use, modification, commercial use, and redistribution subject to its terms, and provides no warranty. Preserve the copyright and permission notices when redistributing copies or substantial portions; keep any applicable third-party notices as well.
+This repository includes the standard [MIT License](LICENSE), copyright `2026 k.goldbug.studio`, as approved by the maintainer. MIT permits use, modification, commercial use, and redistribution subject to its terms, and provides no warranty. Preserve the copyright and permission notices when redistributing copies or substantial portions; keep any applicable third-party notices as well.
 
-Display attribution is optional: downstream users may freely change or omit the project credit in these READMEs and customize `maintainer.name`/`maintainer.handle`. That optional project credit is separate from the required legal notices in `LICENSE`; changing display credit does not remove or replace them. See [display attribution](docs/configuration.md#display-attribution). Public release remains a separate maintainer decision.
+Display attribution is optional: downstream users may freely change or omit the project credit in these READMEs and customize `maintainer.name`/`maintainer.handle`. That optional project credit is separate from the required legal notices in `LICENSE`; changing display credit does not remove or replace them. See [display attribution](docs/configuration.md#display-attribution). Tagged releases remain a separate maintainer decision.

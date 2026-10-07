@@ -8,7 +8,7 @@
 
 適合需要跨對話保留專案範圍、目前狀態、已接受決策、審查責任與交接資訊的維護者及 AI 協作者。將最小範本組複製到專案、填入已確認事實，再依操作手冊推進工作。
 
-這是一套專案運作框架，不是電腦作業系統，也不是需要安裝的應用程式。它不會自動建立專案、執行代理、同步筆記或發布儲存庫。這份本地候選版的公開儲存庫網址與發布仍待核准。
+這是一套專案運作框架，不是電腦作業系統，也不是需要安裝的應用程式。它不會自動建立專案、執行代理、同步筆記或發布儲存庫。公開原始碼儲存庫：[goldbug-project-os-public](https://github.com/kuroboshi007/goldbug-project-os-public)。
 
 三份 README 提供語意一致的入門說明；連結的規則與範本目前以英文撰寫。請遵循唯一的 [AGENTS.md 閱讀順序](AGENTS.md#required-read-order)，設定與政策細節以連結文件為準。
 
@@ -117,6 +117,6 @@ lychee --offline --no-progress --include-fragments --exclude-path 'archive/' './
 
 ## 授權與選用專案署名
 
-依維護者核准，這份候選版包含標準 [MIT License](LICENSE)，版權署名為 `2026 k.goldbug.studio`。MIT 允許依其條款使用、修改、商用及再散布，且不提供保證。再散布副本或重要部分時，必須保留版權與許可通知；適用的第三方通知也要保留。
+依維護者核准，這個儲存庫包含標準 [MIT License](LICENSE)，版權署名為 `2026 k.goldbug.studio`。MIT 允許依其條款使用、修改、商用及再散布，且不提供保證。再散布副本或重要部分時，必須保留版權與許可通知；適用的第三方通知也要保留。
 
-顯示用署名是選用的：下游使用者可自由修改或省略這些 README 的專案 credit，並自訂 `maintainer.name`／`maintainer.handle`。這種選用的專案署名與 `LICENSE` 中必須保留的法律通知不同；修改顯示署名不會移除或取代法律通知。詳見[顯示署名](docs/configuration.md#display-attribution)。公開發布仍須由維護者另外決定。
+顯示用署名是選用的：下游使用者可自由修改或省略這些 README 的專案 credit，並自訂 `maintainer.name`／`maintainer.handle`。這種選用的專案署名與 `LICENSE` 中必須保留的法律通知不同；修改顯示署名不會移除或取代法律通知。詳見[顯示署名](docs/configuration.md#display-attribution)。帶版本標籤的發布仍須由維護者另外決定。
