@@ -1,6 +1,8 @@
-# TASK-<issue-number>: <title>
+# <title>
 
 The GitHub issue number is the task id.
+
+A task file is optional and does not mirror the issue; the issue stays authoritative.
 
 ## Outcome
 
@@ -43,6 +45,7 @@ Each criterion names the expected result and evidence another reviewer can inspe
 
 ## Handoff
 
+- Issue: `owner/repo#<n>`
 - Branch: `agent/<issue-number>-<short-slug>`
 - PR:
 - Implementer:

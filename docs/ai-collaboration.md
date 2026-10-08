@@ -14,7 +14,7 @@ Agents communicate through repository artifacts, not assumed shared chat context
 
 ## Agents without GitHub access
 
-Some agents cannot read a private repository's issues or pull requests. The maintainer relays the task content to them and pastes their output back as a GitHub issue or pull request comment, which is where the record lives. Do not mirror an issue into a file in the repository.
+Some agents cannot read a repository's issues or pull requests. An authorized agent with the required access relays task content and publishes the signed review on the PR with verified readback. The maintainer relays only by explicit choice, not as the default messenger. Follow the [review delivery contract](../AGENTS.md#collaboration-and-records), preserving authorship, verdict, reviewed head/scope and provenance and marking necessary redactions. Do not mirror an issue into a file in the repository.
 
 An agent working this way states in its handoff that it worked from a relay rather than from the issue itself, and re-reads the relayed content after any reported update. The GitHub issue remains authoritative if the two disagree.
 
@@ -33,6 +33,8 @@ Follow the task and repository rules, validate the result, and explain deviation
 ### Reviewer
 
 Read the task before the diff and follow [`playbooks/review-change.md`](../playbooks/review-change.md). Review against accepted intent, not personal preference.
+
+State author, Role, public Session discriminator, reviewed head/scope and implementation participation. Independence is based on no implementation participation, not a different account, product or Role; two sessions of the same product can be independent. Publish and verify delivery under the [review contract](../AGENTS.md#collaboration-and-records).
 
 ## Handoffs
 
