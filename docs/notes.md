@@ -11,7 +11,8 @@ onboarding state and repository URLs. Neither mirrors the other.
 - `none` (default): onboarding, tasks, review, merge and handoff need no notes account,
   destination, summary block or outstanding synchronization. Record `Not applicable`.
 - `notion`: use [the provider guide](notion-sync.md) and profile destinations. Prepare
-  both artifacts in `language.summaries` on the existing designated status page.
+  both artifacts in `language.summaries`; deliver them to the existing designated
+  status page under [Delivery and catch-up](#delivery-and-catch-up).
 - `markdown`: use one repository-named Markdown file in the approved
   `notes.markdown.destination_folder`, with the same Latest and History sections in
   `language.summaries`. No plugin or daemon is needed.
