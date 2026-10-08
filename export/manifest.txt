@@ -44,3 +44,4 @@ templates/STATUS.md
 templates/TASK.md
 tests/test-core-review.py
 tests/test-export.py
+tests/test-secret-scan.py

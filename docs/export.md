@@ -17,7 +17,7 @@ with mode 644. It never reads or falls back to the original archive README; the
 protected archive remains untouched. A missing embedded template fails before
 creating a destination. Every other output retains its committed bytes and mode.
 
-This local candidate's manifest contains exactly 45 files, including the three
+This local candidate's manifest contains exactly 46 files, including the three
 language READMEs and the maintainer-approved standard MIT `LICENSE`. Preserve
 required legal notices when exporting.
 The archive template travels inside the
