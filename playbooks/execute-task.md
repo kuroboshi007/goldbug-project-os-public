@@ -8,6 +8,8 @@ Follow the repository read order. Inspect the worktree, relevant implementation,
 
 Start when the issue has a concrete outcome, observable acceptance criteria with inspectable evidence, and a stop-loss. For an existing issue lacking the criteria or stop-loss, supply them in a short startup comment without rewriting its body. Pause only for a choice that materially changes behavior, risk, cost, compatibility, or scope.
 
+For an unaccepted external request, stop and ask for maintainer acceptance before supplying criteria or starting work.
+
 ## 3. Work
 
 - Follow the [`AGENTS.md` identifiers](../AGENTS.md#identifiers).

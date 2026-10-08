@@ -1,12 +1,10 @@
 ---
 name: Task
 about: Define a bounded implementation task
-title: "TASK-<issue-number>: "
+title: ""
 labels: ""
 assignees: ""
 ---
-
-<!-- After creation, replace <issue-number> with this GitHub issue's number. It is the task id. -->
 
 ## Outcome
 

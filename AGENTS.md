@@ -49,9 +49,11 @@ Some of the rules below are also carried in [`templates/AGENTS.md`](templates/AG
 
 ## Identifiers
 
-- The GitHub issue number is the task id.
-- Issue or task title: `TASK-<issue-number>: <title>`.
-- Branch: `agent/<issue-number>-<short-slug>`.
+- The number GitHub assigns is the task id; issues and pull requests share one sequence.
+- Create the issue first, then the branch `agent/<issue-number>-<short-slug>`; never predict a number and never rename existing issues or branches to fit this rule.
+- Titles are descriptive, with no prefix.
+- An issue the maintainer opened, or that the planner opened from the maintainer's confirmed request, is accepted work. An issue or pull request opened by anyone else is a request until the maintainer accepts it.
+- Refer to another repository's issue or pull request as `owner/repo#<n>`.
 - Decisions: `D-<YYYYMMDD>-<nn>`.
 - ADRs: `ADR-<nnn>`, sequential per repository.
 
