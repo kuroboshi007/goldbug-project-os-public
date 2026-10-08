@@ -7,7 +7,7 @@ It is not an application, live agent chat, GitHub replacement, or reason to docu
 ## Control layers
 
 - **GitHub:** rules, project state, decisions, tasks, diffs, reviews, and history.
-- **Configured notes:** confirmed summaries useful to the maintainer; never active implementation state; [mode](notes.md) defaults to none.
+- **Configured notes:** confirmed summaries and a per-change history useful to the maintainer; never active implementation state; [mode](notes.md) defaults to none.
 - **Chat:** exploration whose durable outcomes move into GitHub.
 
 ## Decision ownership

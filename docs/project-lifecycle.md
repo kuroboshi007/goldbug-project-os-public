@@ -28,11 +28,20 @@ The maintainer resolves meaningful choices and approves the merge.
 
 ## 7. Close
 
-For every merge, update `STATUS.md`, close the issue, record accepted decisions according to [`templates/DECISIONS.md`](../templates/DECISIONS.md), and apply the configured [notes mode](notes.md).
+For every merge, close the issue, record accepted decisions according to [`templates/DECISIONS.md`](../templates/DECISIONS.md), and apply the configured [notes mode](notes.md).
 
-At every merge, add the outcome to Recent outcome, rotate the oldest beyond three verbatim into `archive/status-log.md`, and move a newly shipped capability to `PROJECT.md` Shipped.
+In a product repository, update `STATUS.md`: add the outcome to Recent outcome,
+rotate the oldest beyond three verbatim into `archive/status-log.md`, and move a
+newly shipped capability to `PROJECT.md` Shipped. These are operational records;
+provider History does not replace them. This OS uses the PR record and configured
+status page and does not gain a root `STATUS.md`.
 
-When a notes provider is configured, prepare the exact confirmed summary in the profile’s summary language and state its delivery status. Mode none needs no summary or outstanding sync. Follow [notes](notes.md).
+The implementer prepares History and Latest text and separate states in the PR
+before merge. After merge, the assigned authorized deliverer performs delivery as
+the final Close step, verifying existing access, full-content readback and the PR
+delivery comment under [notes](notes.md#delivery-and-catch-up). Catch-up requires
+the same provider, ownership and authorization checks. Mode none records both as
+Not applicable without text, outstanding sync or a missing-comment blocker.
 
 ## 8. Learn
 

@@ -28,11 +28,13 @@ still requires the maintainer's confirmation; being in a portfolio is not onboar
 
 ## Status pages
 
-Update one designated status page in place after each confirmed merge: what merged,
-current state and next. The merge confirms this update; do not create an article
-for each merge. The repository's STATUS.md owns operational state unless an accepted
-decision assigns product-status authority differently. Keep the operational state
-and its human-facing summary distinct.
+Use Latest and History sections on the existing designated status page. For each
+meaningful confirmed merge, retain the keyed History line and update Latest's
+Merged / Current state / Next under the [delivery rules](notes.md#delivery-and-catch-up).
+No new profile field or article per merge is needed. Product STATUS.md owns
+operational state unless an accepted decision assigns that authority differently.
+The OS uses its PR records and designated page, without a root STATUS.md. Keep
+operational state distinct from these human-facing summaries.
 
 ## Articles
 
@@ -42,10 +44,16 @@ or draft proposal is an article by default.
 
 ## Access and handoff
 
-Prepare the exact update in `language.summaries`, even without connector access.
-An authorized agent or the maintainer can relay it. Keep `Prepared — delivery
-outstanding` until the actual write is verified; access failure is `Blocked: <reason>`
-with the artifact preserved. Follow the [confirmation gate](notes.md#confirmation-gate).
+Prepare both exact texts in `language.summaries`, even without connector access.
+Before delivery, verify the configured destination, assigned owner and existing
+tool/destination authorization. An authorized reviewer or relay may take over from
+the implementer; the maintainer is not the default messenger. The writer verifies
+full-content readback, preserves partial success and records separate History and
+Latest states in one PR delivery comment. Missing access is `Blocked: <reason>`
+with prepared text retained, never a provider fallback. Apply matching-key skips,
+explicit mismatch repairs and merge-time ordering from the
+[delivery rules](notes.md#delivery-and-catch-up), then the
+[confirmation gate](notes.md#confirmation-gate).
 
 ## Drift control
 

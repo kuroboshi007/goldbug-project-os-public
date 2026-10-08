@@ -31,7 +31,18 @@ After `Changes required`, re-review the new diff against the findings raised and
 
 ## Outcome
 
-Use this fixed output shape with one of the four existing verdicts:
+Publish on the PR as a comment or GitHub review, opening with this public identity block. Session is a date and review round, not a private ID or URL; record implementation participation honestly.
+
+```text
+Reviewer: <mark> (<stable product name>) · Role: Reviewer · Session: YYYY-MM-DD r<n>
+Reviewed: <head sha> · Scope: full diff vs <base sha> | <paths>
+Independence: authored no implementation in this PR | <implementation participation; not independent>
+Posted by: <authorized relay> for <review author> (omit when self-posted)
+```
+
+The author is independent only if they did not implement any part of the reviewed change, regardless of account, product or Role. Use the [review delivery contract](../AGENTS.md#collaboration-and-records): an authorized agent with write access relays when needed, preserves the signed original and marks redactions, confirms material differences with its author or labels them unconfirmed, and verifies posted content. A paraphrase is not a replacement for the signed original. The maintainer is not the default messenger.
+
+End with this fixed output shape and one of the four existing verdicts. The textual OS verdict is separate from GitHub's APPROVED state; it neither requires nor implies that state.
 
 ```text
 ## Acceptance criteria

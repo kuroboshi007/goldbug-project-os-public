@@ -61,6 +61,12 @@ Some of the rules below are also carried in [`templates/AGENTS.md`](templates/AG
 
 One agent may plan and implement. Review must be performed by an agent that did not write the change. Follow [`docs/ai-collaboration.md`](docs/ai-collaboration.md) and [`playbooks/review-change.md`](playbooks/review-change.md).
 
+Independence means the review author took no part in implementing the change under review. The review block states author, public session discriminator, reviewed head and scope so that participation can be checked. Account, product name and Role are not evidence either way; two sessions of the same product can be independent. Roles are not bound to a vendor or product.
+
+A review is published on the PR as a comment or GitHub review using the identity block and fixed outcome in the review playbook. The textual OS verdict is separate from GitHub's APPROVED state; neither implies the other, and the maintainer retains merge acceptance. If the author lacks write access, an authorized agent with that permission relays the signed original and verifies readback; the maintainer is not the default messenger.
+
+A relayed review names the author and poster and preserves the verdict, reviewed head/scope and provenance. Mark necessary private-value redactions in place and name the source. A material difference needs author confirmation or an explicit "not yet confirmed by the author" label. The PR record proves delivery; a paraphrase does not supersede the signed original by default.
+
 Follow [`templates/DECISIONS.md`](templates/DECISIONS.md) for decision records and ADR use.
 
 Use [`templates/HANDOFF.md`](templates/HANDOFF.md) when a durable handoff is useful. Follow [`docs/notes.md`](docs/notes.md) for the selected notes mode, confirmation gate, and delivery state.
@@ -69,11 +75,13 @@ Use [`templates/HANDOFF.md`](templates/HANDOFF.md) when a durable handoff is use
 
 Marks are `C` for Claude, Claude Code, or Cowork; `X` for ChatGPT, ChatGPT Work, or Codex; and the active profile’s `maintainer.mark` (default `M`) for the human maintainer; `C` and `X` remain reserved for the vendor families.
 
-Qualify the `Agent:` trailer with the stable product name on every agent commit: `Agent: C (Cowork)`, `Agent: C (Claude Code)`, `Agent: X (ChatGPT)`, or `Agent: X (Codex)`. This is unconditional, because at commit time an agent cannot know whether another agent sharing its mark will join the task later, and commits are not rewritten to add it.
+Qualify the `Agent:` trailer on every agent commit as `Agent: <mark> (<stable product name>)`, using the actual product. Examples include `Agent: C (Claude)`, `Agent: C (Claude Code)`, `Agent: X (ChatGPT)` and `Agent: X (Codex)`; these are not a closed list or an allowlist. Role, model and session stay outside the parentheses. Qualification is unconditional, because at commit time an agent cannot know whether another agent sharing its mark will join the task later. Existing commits and signed documents, including historical product names, are not rewritten.
 
-In review findings use the same notation as a prefix (`C (Cowork): ...`). A bare mark is acceptable there when only one agent of that mark is involved, because a finding is written knowing who else is on the pull request.
+In review findings use the same notation as a prefix (`C (Claude): ...`, for example). A bare mark is acceptable there when only one agent of that mark is involved, because a finding is written knowing who else is on the pull request.
 
 Agent commits end with both trailers: one qualified `Agent:` value from the rule above, plus `Co-Authored-By: Claude <noreply@anthropic.com>` for C agents or `Co-Authored-By: OpenAI Codex <noreply@openai.com>` for X agents. Use stable product names, not model versions; the maintainer's own commits need neither trailer. The trailers are not duplicates, and `Agent:` is authoritative if they disagree. If the active profile enforces an author email, run `git config user.email` before the first commit and set it for this repository only when it differs; never `--global`. Display names are unrestricted. The two trailers are the last paragraph of the message on consecutive lines with no blank line between them; verify with `git log -1 --format='%(trailers:key=Agent,valueonly)%(trailers:key=Co-Authored-By,valueonly)'`. Never execute a placeholder as a Git identity.
+
+PR descriptions and handoffs identify Agent, Role and Session separately; Session is a public date-plus-round discriminator, never a private session ID or URL. Commit checks enforce configured author email and trailer pairing only; they do not validate product names or independence.
 Documents are collectively owned unless they contain an `Author:` field. Another mark may not rewrite or delete a signed document; its only permitted in-file change is a separately signed response section. It may instead respond on the PR or issue. Only the maintainer may delete or supersede a signed document.
 Shared policy files may not be signed: `AGENTS.md`, `README.md`, `PROJECTS.md`, and policy documents in `docs/`, `playbooks/`, and `templates/`.
 
