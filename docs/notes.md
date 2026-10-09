@@ -30,10 +30,23 @@ Insert new entries without changing existing ones. Latest replaces Merged / Curr
 state / Next in place. Translate their labels and text into `language.summaries`.
 These summaries do not replace GitHub or product operational records.
 
+For notion and markdown, Latest also retains its represented qualified PR key
+(`owner/repo#<PR>`) and that PR's exact confirmed GitHub `merged_at` UTC timestamp
+alongside the text. These are destination-content metadata, not profile fields or
+Notion database properties. Translate labels into `language.summaries`, retaining
+the qualified key and timestamp values unchanged.
+
 Before merge, the implementer puts both exact prepared texts and their separate
-delivery states in the PR. A draft does not claim to have merged or been delivered.
+delivery states in the PR. Add the Latest PR key once GitHub assigns its number;
+keep its merge timestamp `Pending — unconfirmed`. After a confirmed merge, the
+assigned authorized deliverer verifies the PR key and actual `merged_at` in GitHub
+and finalizes the exact prepared artifact in the PR body or an authorized PR comment
+before permitted delivery. A finalization comment links to the retained prepared
+text and supplies the confirmed qualified PR key and merge timestamp. It supersedes
+only pending provenance, without changing prepared summary content. Retain that
+summary content in the PR body. A draft does not claim merge or delivery.
 Mode none records both as `Not applicable`, needs neither text nor a destination,
-and never falls back to another provider.
+requires no Latest provenance, and never falls back to another provider.
 
 ## Delivery states
 
@@ -66,19 +79,40 @@ an explicit named repair of that entry or `Blocked: <mismatch>`; never silently
 overwrite it or alter other History entries. After partial delivery, read again and
 repair only the incomplete artifact, retaining matching content.
 
-Replace Latest only when this PR's merge timestamp is later than that of the PR
-currently represented, or no Latest exists; PR numbers do not determine order.
-For the same PR, matching text skips the write; differing text requires an explicit
-named repair or Blocked. If a newer confirmed Latest already exists, retain it and
-record Latest as `Not applicable — newer confirmed summary retained`, with its PR
-key and merge timestamp. Unknown ordering is `Blocked: <missing merge timestamp>`.
+Read Latest's represented PR key, merge timestamp and complete text. Verify both
+represented and incoming PR metadata against GitHub's confirmed merges before
+comparing timestamp instants; PR numbers do not determine order.
+
+| Existing Latest | Action |
+| --- | --- |
+| No Latest exists | Deliver the finalized artifact under existing destination authorization. |
+| Same PR; full text and metadata match | Skip the write and verify complete readback. |
+| Same PR; content or metadata differs | Preserve it; explicit named repair or Blocked is required. |
+| Different PR; incoming merge strictly later | Replace Latest under the existing permission and readback contract. |
+| Different PR; incoming merge earlier or equal | Retain Latest, record its PR key/time and `Not applicable — current Latest retained; incoming merge is not later`. |
+
+An existing Latest with missing, malformed or conflicting provenance is preserved
+and `Blocked: <missing Latest PR key>`, `Blocked: <missing merge timestamp>` or
+`Blocked: <conflicting Latest provenance>`, as applicable. Do not infer its PR from
+the newest History entry, PR numbers, prose dates or current repository head.
+Keep any independently successful authorized History delivery; an unknown Latest
+does not authorize changing it or other History entries.
+
+If existing content or its exact prior delivery record unambiguously identifies
+the represented PR, verify that PR's confirmed GitHub `merged_at` and prepare a
+named metadata-only repair. Execute it only with explicit authorization for that
+repair, retaining Latest text and other History; verify complete readback before
+reconsidering replacement. Without proven identity or authorization, retain the
+specific Blocked state. No automatic backfill or migration overwrite is permitted.
 
 After writing or skipping matching content, read back the full History line and
-all content of Merged / Current state / Next, not just headings. Record Delivered
-only on a match. Keep one `Notes delivery` comment on the merged PR (update that
-comment on retry), naming the deliverer by Agent, Role and public Session, separate
-History/Latest states, a safe destination label and readback time. Keep the prepared
-texts in the PR body; never publish private destination IDs or URLs.
+the represented PR key, merge timestamp and all Merged / Current state / Next text,
+not just headings. Record Delivered only on a full match. Keep one `Notes delivery`
+comment on the merged PR (update that comment on retry), naming the deliverer by
+Agent, Role and public Session, separate History/Latest states, a safe destination
+label and readback time. Link the PR-body or comment finalization record from that
+delivery-result comment. Keep the prepared summary content in the PR body; never
+publish private destination IDs or URLs.
 
 A later session catches up only after taking delivery ownership with verified
 provider access. Reading a merged PR confers neither write rights nor ownership;

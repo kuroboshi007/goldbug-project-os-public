@@ -31,7 +31,16 @@ still requires the maintainer's confirmation; being in a portfolio is not onboar
 Use Latest and History sections on the existing designated status page. For each
 meaningful confirmed merge, retain the keyed History line and update Latest's
 Merged / Current state / Next under the [delivery rules](notes.md#delivery-and-catch-up).
-No new profile field or article per merge is needed. Product STATUS.md owns
+Latest also stores its qualified represented PR key and exact confirmed GitHub
+`merged_at` UTC timestamp alongside the text. These are section content, not new
+profile fields or Notion database properties. Before merge the timestamp is pending;
+the assigned authorized deliverer finalizes it in the PR body or an authorized PR
+comment after confirmation and before permitted delivery, following the common
+[prepared-artifact rules](notes.md#two-artifacts). A comment links to retained text
+and supersedes pending provenance only; prepared summary content is preserved.
+Missing or conflicting existing provenance follows the common
+preserve/Block/named-repair contract.
+No new article per merge is needed. Product STATUS.md owns
 operational state unless an accepted decision assigns that authority differently.
 The OS uses its PR records and designated page, without a root STATUS.md. Keep
 operational state distinct from these human-facing summaries.
@@ -48,8 +57,10 @@ Prepare both exact texts in `language.summaries`, even without connector access.
 Before delivery, verify the configured destination, assigned owner and existing
 tool/destination authorization. An authorized reviewer or relay may take over from
 the implementer; the maintainer is not the default messenger. The writer verifies
-full-content readback, preserves partial success and records separate History and
-Latest states in one PR delivery comment. Missing access is `Blocked: <reason>`
+full-content readback including Latest's PR key and merge timestamp, preserves
+partial success and records separate History and
+Latest states in one PR delivery comment linking the finalization record.
+Missing access is `Blocked: <reason>`
 with prepared text retained, never a provider fallback. Apply matching-key skips,
 explicit mismatch repairs and merge-time ordering from the
 [delivery rules](notes.md#delivery-and-catch-up), then the
