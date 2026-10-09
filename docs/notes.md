@@ -38,9 +38,13 @@ the qualified key and timestamp values unchanged.
 
 Before merge, the implementer puts both exact prepared texts and their separate
 delivery states in the PR. Add the Latest PR key once GitHub assigns its number;
-keep its merge timestamp `Pending — unconfirmed`. After a confirmed merge, verify
-the PR key and actual `merged_at` in GitHub and finalize the prepared artifact in
-the PR before permitted delivery. A draft does not claim merge or delivery.
+keep its merge timestamp `Pending — unconfirmed`. After a confirmed merge, the
+assigned authorized deliverer verifies the PR key and actual `merged_at` in GitHub
+and finalizes the exact prepared artifact in the PR body or an authorized PR comment
+before permitted delivery. A finalization comment links to the retained prepared
+text and supplies the confirmed qualified PR key and merge timestamp. It supersedes
+only pending provenance, without changing prepared summary content. Retain that
+summary content in the PR body. A draft does not claim merge or delivery.
 Mode none records both as `Not applicable`, needs neither text nor a destination,
 requires no Latest provenance, and never falls back to another provider.
 
@@ -104,10 +108,11 @@ specific Blocked state. No automatic backfill or migration overwrite is permitte
 After writing or skipping matching content, read back the full History line and
 the represented PR key, merge timestamp and all Merged / Current state / Next text,
 not just headings. Record Delivered only on a full match. Keep one `Notes delivery`
-comment on the merged PR (update that
-comment on retry), naming the deliverer by Agent, Role and public Session, separate
-History/Latest states, a safe destination label and readback time. Keep the prepared
-texts in the PR body; never publish private destination IDs or URLs.
+comment on the merged PR (update that comment on retry), naming the deliverer by
+Agent, Role and public Session, separate History/Latest states, a safe destination
+label and readback time. Link the PR-body or comment finalization record from that
+delivery-result comment. Keep the prepared summary content in the PR body; never
+publish private destination IDs or URLs.
 
 A later session catches up only after taking delivery ownership with verified
 provider access. Reading a merged PR confers neither write rights nor ownership;

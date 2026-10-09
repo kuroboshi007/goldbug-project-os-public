@@ -34,8 +34,12 @@ Merged / Current state / Next under the [delivery rules](notes.md#delivery-and-c
 Latest also stores its qualified represented PR key and exact confirmed GitHub
 `merged_at` UTC timestamp alongside the text. These are section content, not new
 profile fields or Notion database properties. Before merge the timestamp is pending;
-finalize it after confirmation and before permitted delivery. Missing or conflicting
-existing provenance follows the common preserve/Block/named-repair contract.
+the assigned authorized deliverer finalizes it in the PR body or an authorized PR
+comment after confirmation and before permitted delivery, following the common
+[prepared-artifact rules](notes.md#two-artifacts). A comment links to retained text
+and supersedes pending provenance only; prepared summary content is preserved.
+Missing or conflicting existing provenance follows the common
+preserve/Block/named-repair contract.
 No new article per merge is needed. Product STATUS.md owns
 operational state unless an accepted decision assigns that authority differently.
 The OS uses its PR records and designated page, without a root STATUS.md. Keep
@@ -55,7 +59,8 @@ tool/destination authorization. An authorized reviewer or relay may take over fr
 the implementer; the maintainer is not the default messenger. The writer verifies
 full-content readback including Latest's PR key and merge timestamp, preserves
 partial success and records separate History and
-Latest states in one PR delivery comment. Missing access is `Blocked: <reason>`
+Latest states in one PR delivery comment linking the finalization record.
+Missing access is `Blocked: <reason>`
 with prepared text retained, never a provider fallback. Apply matching-key skips,
 explicit mismatch repairs and merge-time ordering from the
 [delivery rules](notes.md#delivery-and-catch-up), then the
