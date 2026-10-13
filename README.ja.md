@@ -40,7 +40,7 @@ cp templates/AGENTS.md templates/PROJECT.md templates/STATUS.md templates/DECISI
 | `STATUS.md` | 現在の状態、次の作業、障害、リスク |
 | `DECISIONS.md` | 採用済みの決定。未決事項は未確認のままにする |
 
-テンプレートの仮置き文字列を確認済みの情報に置き換え、不明な点は `To confirm` と記します。仮置き文字列を URL、コマンド、Git の身元情報として実行してはいけません。公開 upstream URL は想定していません。`upstream.url` が未設定なら clone を保留します。エージェントには、プロジェクトの指示と文書を読んだうえで、範囲を限定した 1 つのタスクと検証計画を提案するよう依頼します。タスク、引き継ぎ、ADR のテンプレートは必要な場合だけ追加します。Claude を使う場合は `templates/CLAUDE.md` もコピーできます。
+テンプレートの仮置き文字列を確認済みの情報に置き換え、不明な点は `To confirm` と記します。仮置き文字列を URL、コマンド、Git の身元情報として実行してはいけません。公開 upstream URL は想定していません。`upstream.url` が未設定なら clone を保留します。エージェントには、プロジェクトの指示と文書を読んだうえで、範囲を限定した 1 つのタスクと検証計画を提案するよう依頼します。タスク、引き継ぎ、ADR のテンプレートは必要な場合だけ追加します。
 
 既存のプロジェクトでは、現在の文書と安全ルールを先に確認して対応づけ、無条件に置き換えないでください。導入全体、作業手順のファイル、レビューについては [Bootstrap a Project](playbooks/bootstrap-project.md)を参照してください。
 

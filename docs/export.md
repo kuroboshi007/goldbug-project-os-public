@@ -17,9 +17,11 @@ with mode 644. It never reads or falls back to the original archive README; the
 protected archive remains untouched. A missing embedded template fails before
 creating a destination. Every other output retains its committed bytes and mode.
 
-This local candidate's manifest contains exactly 46 files, including the three
+This local candidate's manifest contains exactly 44 files, including the three
 language READMEs and the maintainer-approved standard MIT `LICENSE`. Preserve
 required legal notices when exporting.
+The source tree has 45 tracked files: the retirement evidence record under
+`archive/` is outside the manifest and is not an exported payload file.
 The archive template travels inside the
 already included exporter, so there is no omitted fixture dependency. A fresh
 candidate initialized and committed as a downstream Git repository can run both
