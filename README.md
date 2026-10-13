@@ -40,7 +40,7 @@ With no selected profile, the first command prints `configuration source: off â€
 | `STATUS.md` | Current state, next action, blockers, and risks |
 | `DECISIONS.md` | Accepted decisions; leave undecided questions unconfirmed |
 
-Replace template placeholders with confirmed information, or mark unknowns `To confirm`. Never execute a placeholder as a URL, command, or Git identity. No public upstream URL is assumed: an unset `upstream.url` withholds cloning. Ask an agent to read the project instructions and documents, then propose one bounded task and its validation plan. Add task, handoff, or ADR templates only when useful; Claude users may also copy `templates/CLAUDE.md`.
+Replace template placeholders with confirmed information, or mark unknowns `To confirm`. Never execute a placeholder as a URL, command, or Git identity. No public upstream URL is assumed: an unset `upstream.url` withholds cloning. Ask an agent to read the project instructions and documents, then propose one bounded task and its validation plan. Add task, handoff, or ADR templates only when useful.
 
 For an existing project, inspect and map its current documents and safety rules first; do not replace them blindly. Follow [Bootstrap a Project](playbooks/bootstrap-project.md) for complete onboarding, workflow copies, and review.
 

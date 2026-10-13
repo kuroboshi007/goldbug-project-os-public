@@ -40,7 +40,7 @@ cp templates/AGENTS.md templates/PROJECT.md templates/STATUS.md templates/DECISI
 | `STATUS.md` | 目前狀態、下一步、阻礙與風險 |
 | `DECISIONS.md` | 已接受的決策；未決問題保持未確認 |
 
-以已確認資訊取代範本佔位文字，未知事項標記為 `To confirm`。不要把佔位文字當成網址、指令或 Git 身分執行。這裡不假設任何公開上游網址；`upstream.url` 未設定時，不進行 clone。請代理先閱讀專案規則與文件，再提出一項範圍明確的任務及驗證計畫。只有需要時才加入任務、交接或 ADR 範本；Claude 使用者也可複製 `templates/CLAUDE.md`。
+以已確認資訊取代範本佔位文字，未知事項標記為 `To confirm`。不要把佔位文字當成網址、指令或 Git 身分執行。這裡不假設任何公開上游網址；`upstream.url` 未設定時，不進行 clone。請代理先閱讀專案規則與文件，再提出一項範圍明確的任務及驗證計畫。只有需要時才加入任務、交接或 ADR 範本。
 
 既有專案應先檢查並對照現有文件及安全規則，不要直接替換。完整導入、工作流程檔案與審查步驟請見 [Bootstrap a Project](playbooks/bootstrap-project.md)。
 
