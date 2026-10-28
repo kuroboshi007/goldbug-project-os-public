@@ -113,10 +113,10 @@ with tempfile.TemporaryDirectory(prefix='project-os-review-') as temp:
         return subprocess.check_output(['git', *args], cwd=directory, env=ENV,
                                        text=True, stderr=subprocess.PIPE).strip()
 
-    def commit(email='author@example.invalid'):
+    def commit(email='author@example.invalid', message='Synthetic review regression'):
         git('-c', 'user.name=Synthetic Author', '-c', f'user.email={email}',
             '-c', 'commit.gpgsign=false', 'commit', '--allow-empty', '-qm',
-            'Synthetic review regression')
+            message)
         return git('rev-parse', 'HEAD')
 
     git('init', '-q', '--template=')
@@ -159,6 +159,26 @@ with tempfile.TemporaryDirectory(prefix='project-os-review-') as temp:
             1, 'other@example.invalid', 'on — repository variable')
     ci_case('CI nonblank padded value remains exact', matching_head, other_head,
             1, ' other@example.invalid ', 'on — repository variable')
+
+    # GitHub App/bot authors skip the email comparison; trailers still apply.
+    previous = other_head
+    bot_cases = (
+        ('Dependabot', '49699333+dependabot[bot]@users.noreply.github.com', None, 0),
+        ('github-actions', '41898282+github-actions[bot]@users.noreply.github.com', None, 0),
+        ('lookalike without brackets', '49699333+dependabot@users.noreply.github.com', None, 1),
+        ('[bot] on another domain', 'dependabot[bot]@example.invalid', None, 1),
+        ('[bot] noreply on a lookalike host', 'x[bot]@users.noreply.github.com.example.invalid', None, 1),
+        ('Dependabot with unpaired trailer',
+         '49699333+dependabot[bot]@users.noreply.github.com', 'Agent: C (Claude Code)', 1),
+    )
+    for label, email, trailer, expected in bot_cases:
+        message = 'Synthetic bot regression' + (f'\n\n{trailer}' if trailer else '')
+        head = commit(email, message)
+        for variable, source in ((None, 'on — tracked profile'),
+                                 ('other@example.invalid', 'on — repository variable')):
+            ci_case(f'CI bot author / {label} / {source}', previous, head,
+                    expected, variable, source)
+        previous = head
 
 # Self-contained trusted-data fixtures test name lookup, not offset calculation.
 with tempfile.TemporaryDirectory(prefix='project-os-timezone-') as temp:

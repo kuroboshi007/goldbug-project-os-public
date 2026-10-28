@@ -93,6 +93,11 @@ copyright obligations.
 `bash scripts/check-commits.sh <base> <head>` resolves/validates the profile, checks
 non-merge commits' emails only when enforced, and checks trailers both-or-neither.
 Display names are unrestricted. No profile means email enforcement is off, not an error.
+Commits whose author email matches `*[bot]@users.noreply.github.com` (GitHub
+App/bot accounts such as Dependabot) skip the email comparison and are named in a
+`note:` line; their trailers are still checked. Author metadata is self-asserted,
+so this is identity hygiene, not authentication: review and the maintainer's merge
+remain the gate.
 
 With `PROJECT_OS_CI=1`, the workflow environment/repository variable
 `PROJECT_OS_COMMIT_EMAIL` wins for email policy (`on — repository variable`).
