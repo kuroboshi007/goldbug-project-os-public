@@ -19,7 +19,10 @@ count=0
 commits=$(git rev-list --no-merges "$base..$head")
 for commit in $commits; do
   count=$((count + 1))
-  if [[ "$enforce" == true && "$(git log -1 --format='%ae' "$commit")" != "$expected" ]]; then
+  author=$(git log -1 --format='%ae' "$commit")
+  if [[ "$enforce" == true && "$author" == *"[bot]@users.noreply.github.com" ]]; then
+    echo "note: $commit is authored by a GitHub bot; email policy not applied"
+  elif [[ "$enforce" == true && "$author" != "$expected" ]]; then
     echo "error: $commit author email violates configured policy" >&2
     status=1
   fi
